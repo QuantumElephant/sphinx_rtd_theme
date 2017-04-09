@@ -80,6 +80,8 @@
 
   {# Keep modernizr in head - http://modernizr.com/docs/#installing #}
   <script src="{{ pathto('_static/js/modernizr.min.js', 1) }}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
   <style type="text/css">
   #content {
       position: relative;
@@ -111,7 +113,7 @@
       /*border-radius: 6px;*/
       padding: 4px;
       font-size:12px;
-      line-height: 14px;
+      line-height: 15px;
       /* Position the tooltip */
       position: absolute;
       z-index: 1;
@@ -119,7 +121,9 @@
 
   .tooltip:hover .tooltiptext {
       visibility: visible;
-      position: absolute; left: -6em; top: 1.6em; z-index: 99;
+      position: absolute;
+      /*left: -70px; -index: 99;*/
+      top: 20px;
       }
  </style>
 </head>
@@ -253,6 +257,40 @@
   {% endif %}
 
   {%- block footer %} {% endblock %}
+  <script>
+  $(".tooltiptext").hide(); // On very first line of scripts.js file
 
+
+  $("a").hover(function () {
+    var elems = this;
+    var curClass = elems.className // current class clicked.
+    // var windowHeight = $(".rst-content").height();
+    var windowWidth = $(".rst-content").width();
+
+    var left = elems.offsetLeft;
+    var top = elems.offsetTop;
+    // var linkHeight = $(".tooltip").height();
+    // var linkWidth = $(".tooltip").width();
+    // var tooltiph = $(".tooltiptext").height();
+    var tooltipw = $(".tooltiptext").width();
+    // var bottom = windowHeight - top - tooltiph;
+    var right = windowWidth - left - tooltipw;
+
+		var isEntirelyVisible = (left + tooltipw <= windowWidth);
+    if (!isEntirelyVisible) {
+        $(".tooltiptext").css("right", "0px");
+    } else  {
+        $(".tooltiptext").css("right", "-150px");
+    }
+
+
+
+
+    $(".tooltiptext").fadeIn('fast');
+},
+
+function () {
+});
+  </script>
 </body>
 </html>
