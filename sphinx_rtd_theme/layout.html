@@ -80,7 +80,6 @@
 
   {# Keep modernizr in head - http://modernizr.com/docs/#installing #}
   <script src="{{ pathto('_static/js/modernizr.min.js', 1) }}"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
   <style type="text/css">
   #content {
@@ -257,7 +256,7 @@
   {% endif %}
 
   {%- block footer %} {% endblock %}
-  <script>
+  <script type='text/javascript'>
   $(".tooltiptext").hide(); // On very first line of scripts.js file
 
 
@@ -280,7 +279,7 @@
     if (!isEntirelyVisible) {
         $(".tooltiptext").css("right", "0px");
     } else  {
-        $(".tooltiptext").css("right", "-150px");
+        $(".tooltiptext").css("right", "-160px");
     }
 
 
